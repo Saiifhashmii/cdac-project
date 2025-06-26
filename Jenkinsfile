@@ -11,7 +11,7 @@ pipeline {
         stage('Checkout Code') {
             steps {
                 echo '📦 Cloning GitHub repository...'
-                git 'https://github.com/Saiifhashmii/cdac-project.git'
+                
             }
         }
 
