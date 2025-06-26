@@ -1,0 +1,33 @@
+<!-- templates/bugs.html -->
+{% extends 'base.html' %}
+
+{% block title %}Bug List | SecureBugTracker{% endblock %}
+
+{% block content %}
+  <div class="card shadow p-4">
+    <h3 class="mb-4 text-danger">Reported Bugs</h3>
+    {% if bugs %}
+      <table class="table table-bordered table-hover align-middle">
+        <thead class="table-dark">
+          <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for bug in bugs %}
+          <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ bug[1] }}</td>
+            <td>{{ bug[2] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p class="text-muted">No bugs reported yet.</p>
+    {% endif %}
+  </div>
+{% endblock %}
+

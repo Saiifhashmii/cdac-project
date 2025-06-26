@@ -1,0 +1,8 @@
+-- init.sql
+CREATE TABLE IF NOT EXISTS bugs (
+  id SERIAL PRIMARY KEY,
+  title TEXT NOT NULL,
+  description TEXT NOT NULL,
+  reported_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
