@@ -10,21 +10,21 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                echo '📦 Cloning GitHub repository...'
+                echo ' Cloning GitHub repository...'
                 
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                echo '🐳 Building Docker image...'
+                echo ' Building Docker image...'
                 sh 'docker build -t $DOCKER_IMAGE:$DOCKER_TAG ./backend'
             }
         }
 
         stage('Push to Docker Hub') {
             steps {
-                echo '🚀 Pushing image to Docker Hub...'
+                echo ' Pushing image to Docker Hub...'
                 withCredentials([usernamePassword(credentialsId: "${DOCKER_CREDENTIALS_ID}", usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
                     sh '''
                         echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
@@ -38,7 +38,7 @@ pipeline {
 
     post {
         always {
-            echo '✅ Jenkins pipeline execution completed.'
+            echo ' Jenkins pipeline execution completed.'
         }
     }
 }
