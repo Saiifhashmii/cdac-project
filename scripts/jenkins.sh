@@ -1,5 +1,5 @@
 #!/bin/bash
-#this Script belong to Cloudaseem Youtube channel #####
+#this Script belong to saiif hashmii for his cdac project#####
 # jenkins installation on ubuntu 
 sudo apt update -y
 sudo apt install fontconfig openjdk-17-jre -y
