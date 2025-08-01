@@ -75,35 +75,35 @@ pipeline {
 
     post {
         success {
-            emailext (
-                subject: "Jenkins Build Success: ${env.JOB_NAME} [#${env.BUILD_NUMBER}]",
+            emailext(
+                subject: "✅ Jenkins Build Success: ${env.JOB_NAME} [#${env.BUILD_NUMBER}]",
                 body: """
                     <p>Hi Team,</p>
-                    <p>The Jenkins job <strong>${env.JOB_NAME}</strong> build <strong>#${env.BUILD_NUMBER}</strong> completed <span style='color:green;'>successfully</span>.</p>
-                    <p>Check the job console <a href="${env.BUILD_URL}">here</a>.</p>
-                    <br>
-                    <p>Regards,<br>Jenkins CI</p>
+                    <p><strong>${env.JOB_NAME}</strong> build <strong>#${env.BUILD_NUMBER}</strong> completed <span style='color:green;'>successfully</span>.</p>
+                    <p><a href="${env.BUILD_URL}">Click here to view the Jenkins Job</a></p>
+                    <br><p>Regards,<br>Jenkins</p>
                 """,
                 mimeType: 'text/html',
                 to: "saiifhashmii000@gmail.com"
             )
         }
+
         failure {
-            emailext (
-                subject: "Jenkins Build Failed: ${env.JOB_NAME} [#${env.BUILD_NUMBER}]",
+            emailext(
+                subject: "❌ Jenkins Build Failed: ${env.JOB_NAME} [#${env.BUILD_NUMBER}]",
                 body: """
                     <p>Hi Team,</p>
-                    <p>The Jenkins job <strong>${env.JOB_NAME}</strong> build <strong>#${env.BUILD_NUMBER}</strong> has <span style='color:red;'>FAILED</span>.</p>
-                    <p>Check the job console <a href="${env.BUILD_URL}">here</a> for details.</p>
-                    <br>
-                    <p>Regards,<br>Jenkins CI</p>
+                    <p><strong>${env.JOB_NAME}</strong> build <strong>#${env.BUILD_NUMBER}</strong> has <span style='color:red;'>FAILED</span>.</p>
+                    <p><a href="${env.BUILD_URL}">Click here to view the Jenkins Job</a></p>
+                    <br><p>Regards,<br>Jenkins</p>
                 """,
                 mimeType: 'text/html',
                 to: "saiifhashmii000@gmail.com"
             )
         }
+
         always {
-            echo 'Jenkins pipeline execution completed.'
+            echo '✅ Jenkins pipeline execution completed.'
         }
     }
 }
